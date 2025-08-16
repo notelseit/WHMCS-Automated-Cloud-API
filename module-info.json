@@ -1,0 +1,85 @@
+{
+  "name": "hetzner-vps-whmcs-auto",
+  "version": "2.0.0",
+  "description": "WHMCS Module for Hetzner Cloud VPS with Automated API Configuration",
+  "main": "hetznervps.php",
+  "type": "whmcs-module",
+  "keywords": [
+    "whmcs",
+    "hetzner",
+    "vps",
+    "cloud",
+    "automation",
+    "api"
+  ],
+  "author": {
+    "name": "Your Name",
+    "email": "your.email@example.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/notelseit/WHMCS-HetznerVPS"
+  },
+  "requirements": {
+    "php": ">=7.4",
+    "whmcs": ">=7.0",
+    "extensions": [
+      "curl",
+      "json", 
+      "openssl"
+    ]
+  },
+  "features": [
+    "Automated configuration from Hetzner API",
+    "Intelligent caching system",
+    "Automatic updates via cron job",
+    "Complete VPS lifecycle management",
+    "Resilient fallback system",
+    "Comprehensive logging"
+  ],
+  "files": {
+    "module": "hetznervps.php",
+    "setup": "setup-helper.php",
+    "cache_updater": "scripts/update_cache.php",
+    "cron_script": "scripts/update_cache.sh",
+    "documentation": "README.md"
+  },
+  "directories": {
+    "cache": "cache/",
+    "logs": "logs/",
+    "data": "data/",
+    "scripts": "scripts/"
+  },
+  "api_endpoints": [
+    "GET /server_types",
+    "GET /locations", 
+    "GET /images",
+    "POST /servers",
+    "POST /servers/{id}/actions/poweron",
+    "POST /servers/{id}/actions/poweroff",
+    "POST /servers/{id}/actions/reboot",
+    "POST /servers/{id}/actions/reset_password",
+    "DELETE /servers/{id}"
+  ],
+  "config_options": {
+    "static": [
+      "api_token",
+      "default_location",
+      "enable_backups",
+      "enable_monitoring"
+    ],
+    "dynamic": [
+      "server_type",
+      "location",
+      "image"
+    ]
+  },
+  "installation": [
+    "Upload files to /modules/servers/hetznervps/",
+    "Set proper file permissions",
+    "Configure cron job for cache updates",
+    "Create WHMCS product with module",
+    "Configure API token and settings"
+  ]
+}
